@@ -1,18 +1,25 @@
-#Uses python3
+class Graph():
+    def __init__(self, adj):
+        self.adj = adj
+        self.size = len(adj)
+        self.visited = [False] * self.size
 
-import sys
+    def explore(self, index, visited):
+        if visited[index] is True:
+            return True
+        visited[index] = True
+        for neighbor in self.adj[index]:
+            if self.explore(neighbor, list(visited)):
+                return True
+        return False
+
+    def acyclic(self):
+        for index in range(self.size):
+            if self.explore(index, [False] * self.size):
+                return 1
+        return 0
 
 
 def acyclic(adj):
-    return 0
-
-if __name__ == '__main__':
-    input = sys.stdin.read()
-    data = list(map(int, input.split()))
-    n, m = data[0:2]
-    data = data[2:]
-    edges = list(zip(data[0:(2 * m):2], data[1:(2 * m):2]))
-    adj = [[] for _ in range(n)]
-    for (a, b) in edges:
-        adj[a - 1].append(b - 1)
-    print(acyclic(adj))
+    graph = Graph(adj)
+    return graph.acyclic()
