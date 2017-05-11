@@ -8,8 +8,10 @@ class TestAcyclicity(TestCase):
              [2],
              [0],
              [0]]
-
-        self.assertEqual(acyclic(g), 1, "One loop")
-        g = [[1, 2, 3], [2, 4], [3, 4], [], []]
-        self.assertEqual(acyclic(g), 0, "No loop")
-
+        self.assertEqual(acyclic(g), 0, "Not Acylic")
+        g = [[1, 2, 3],
+             [2, 4],
+             [3, 4],
+             [],
+             []]
+        self.assertEqual(acyclic(g), 1, "Acylic")
