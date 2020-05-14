@@ -1,0 +1,28 @@
+#include <stdlib.h>
+#include <string.h>
+#include "fibonacci.h"
+#include "reverse.h"
+#include <stdio.h>
+
+void print_fib(int i);
+void reverse(char *str, int len);
+
+int main(int argc, char *argv[]) {
+	int i = 1;
+
+  #ifdef FIBONACCI
+	if (i < argc) {
+		print_fib(atoi(argv[i]));
+		i++;
+	}
+	#endif
+
+	#ifdef REVERSE
+	if (i < argc) {
+		reverse(argv[i], strlen(argv[i]));
+		i++;
+	}
+  #endif
+
+	return 0;
+}
