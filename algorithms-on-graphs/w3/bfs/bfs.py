@@ -8,7 +8,6 @@ def distance(adj, s, t):
     q.put(s)
     while not q.empty():
         current_v = q.get()
-        print current_v
         if current_v == t:
             return dist[current_v]
         for neighbor in adj[current_v]:
