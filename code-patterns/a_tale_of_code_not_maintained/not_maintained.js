@@ -1,12 +1,13 @@
 function get_logs(dbName, uuid) {
     switch (dbName) {
         case 'A':
+            // TODO MIGRATE TO API
             db = get_database_conn_A()
             break
         case 'B':
-            db =  get_database_conn_B()
-            break
+            return call_service_B_API(uuid)
         case 'C':
+            // TODO MIGRATE TO API
             db = get_database_conn_C()
             break
         default:
